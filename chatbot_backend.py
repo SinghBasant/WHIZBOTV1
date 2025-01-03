@@ -8,7 +8,8 @@ def demo_chatbot():
 
     aws_access_key_id = st.secrets["AWS_ACCESS_KEY_ID"]
     aws_secret_access_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
-        
+    aws_default_region = st.secrets["AWS_DEFAULT_REGION"]
+    
     demo_llm = ChatBedrock(
         #boto3_session=session,
         print("aws_access_key_id",aws_access_key_id)
@@ -16,7 +17,7 @@ def demo_chatbot():
         print("basant")
         aws_access_key_id=aws_access_key_id,
         aws_secret_access_key=aws_secret_access_key,
-        region_name='us-east-1',
+        region_name=aws_default_region,
         print("region_name",region_name)
         model_id='amazon.nova-micro-v1:0',
         model_kwargs={
