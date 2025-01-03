@@ -12,8 +12,8 @@ def demo_chatbot():
         
     demo_llm = ChatBedrock(
         #boto3_session=session,
-        aws_access_key_id='AKIA3LET5ZMHXM7PPGNO',
-        aws_secret_access_key='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',
+        aws_access_key_id=aws_access_key_id,
+        aws_secret_access_key=aws_secret_access_key,
         region_name='us-east-1',
         model_id='amazon.nova-micro-v1:0',
         model_kwargs={
