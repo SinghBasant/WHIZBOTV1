@@ -6,19 +6,15 @@ from langchain_aws import ChatBedrock
 
 def demo_chatbot():
 
-    aws_access_key_id = st.secrets["AWS_ACCESS_KEY_ID"]
-    aws_secret_access_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
-    aws_default_region = st.secrets["AWS_DEFAULT_REGION"]
-    
+    # aws_access_key_id = st.secrets["AWS_ACCESS_KEY_ID"]
+    # aws_secret_access_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
+    # region_name = st.secrets["AWS_REGION"]
+        
     demo_llm = ChatBedrock(
         #boto3_session=session,
-        print("aws_access_key_id",aws_access_key_id)
-        print("aws_secret_access_key",aws_secret_access_key)
-        print("basant")
-        aws_access_key_id=aws_access_key_id,
-        aws_secret_access_key=aws_secret_access_key,
-        region_name=aws_default_region,
-        print("region_name",region_name)
+        aws_access_key_id='AKIA3LET5ZMHXM7PPGNO',
+        aws_secret_access_key='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',
+        region_name='us-east-1',
         model_id='amazon.nova-micro-v1:0',
         model_kwargs={
             "max_tokens": 100,
