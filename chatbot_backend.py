@@ -1,21 +1,28 @@
-#Steps
-#1 import the ConversationSummaryBufferMemory, ConversationChain, ChatBedrock (BedrockChat) Langchain Modules
+import boto3
+import streamlit as st
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationSummaryBufferMemory
 from langchain_aws import ChatBedrock
 
-#2a Write a function for invoking model- client connection with Bedrock with profile, model_id & Inference params- model_kwargs
 def demo_chatbot():
-#def demo_chatbot(input_text):
-    demo_llm=ChatBedrock(
-       credentials_profile_name='default',
-       #model_id='amazon.nova-lite-v1:0',
-       model_id='amazon.nova-micro-v1:0',
-       model_kwargs= {
-           "max_tokens": 100,
-           "temperature": 0.3,
-           "top_p": 0.9,
-           "stop_sequences": ["\n\nHuman:"]} )
+
+    aws_access_key_id = st.secrets["AWS_ACCESS_KEY_ID"]
+    aws_secret_access_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
+    region_name = st.secrets["AWS_REGION"]
+        
+    demo_llm = ChatBedrock(
+        #boto3_session=session,
+        aws_access_key_id=aws_access_key_id,
+        aws_secret_access_key=aws_secret_access_key,
+        region_name=region_name,
+        model_id='amazon.nova-micro-v1:0',
+        model_kwargs={
+            "max_tokens": 100,
+            "temperature": 0.3,
+            "top_p": 0.9,
+            "stop_sequences": ["\n\nHuman:"]
+        }
+    )
     return demo_llm
 #2b Test out the LLM with Predict method instead use invoke method
    # return demo_llm.invoke(input_text)
